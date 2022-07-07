@@ -222,8 +222,8 @@ async def start(client, message):
                 [
                    InlineKeyboardButton("Filters", url="https://t.me/Mo_tech_group"),
                    InlineKeyboardButton("File Store", url="https://t.me/Mo_Tech_YT/176")
-            ]
-        ),
+                ]
+    ),
         reply_to_message_id=message.message_id
     )
     if Config.SAVE_USER == "yes":
