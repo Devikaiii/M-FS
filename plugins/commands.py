@@ -21,7 +21,7 @@ from database.filters_mdb import filter_stats
 from database.users_mdb import add_user, find_user, all_users
 
 
-@ddrabit.on_message(filters.command('id') & (filters.private | filters.group))
+@trojanz.on_message(filters.command('id') & (filters.private | filters.group))
 async def showid(client, message):
     chat_type = message.chat.type
 
@@ -46,7 +46,7 @@ async def showid(client, message):
         )   
 
 
-@ddrabit.on_message(filters.command('info') & (filters.private | filters.group))
+@trojanz.on_message(filters.command('info') & (filters.private | filters.group))
 async def showinfo(client, message):
     try:
         cmd, id = message.text.split(" ", 1)
@@ -110,7 +110,7 @@ async def showinfo(client, message):
     )
 
 
-@drabit.on_message((filters.private | filters.group) & filters.command('status'))
+@trojanz.on_message((filters.private | filters.group) & filters.command('status'))
 async def bot_status(client,message):
     if str(message.from_user.id) not in Config.AUTH_USERS:
         return
@@ -209,7 +209,7 @@ async def bot_status(client,message):
     )
 
 
-@ddrabit.on_message(filters.command('start') & filters.private)
+@trojanz.on_message(filters.command('start') & filters.private)
 async def start(client, message):
     await message.reply_text(
         text=Script.START_MSG.format(message.from_user.mention),
@@ -217,17 +217,12 @@ async def start(client, message):
         reply_markup=InlineKeyboardMarkup(
             [
                 [
-                   InlineKeyboardButton("𝙲𝚘𝚖𝚖𝚊𝚗𝚍 𝙷𝚎𝚕𝚙", callback_data="help_data")
+                   InlineKeyboardButton("➕️ Add Me to Your Group ➕️", callback_data="help_data")
                 ],
                 [
-                   InlineKeyboardButton("🗣️𝙶𝚛𝚘𝚞𝚙", url="https://t.me/Mo_tech_group"),
-                   InlineKeyboardButton("🤖Bot List", url="https://t.me/Mo_Tech_YT/176"),
-                   InlineKeyboardButton("👨‍💻Source", url="https://youtu.be/KrpqqNNLUSU")
-                ],
-                [
-                   InlineKeyboardButton("🔻 Subscribe Now YouTube 🔻", url="https://youtu.be/KrpqqNNLUSU")
-                ]
-            ]
+                   InlineKeyboardButton("Filters", url="https://t.me/Mo_tech_group"),
+                   InlineKeyboardButton("File Store", url="https://t.me/Mo_Tech_YT/176"),
+             ]
         ),
         reply_to_message_id=message.message_id
     )
